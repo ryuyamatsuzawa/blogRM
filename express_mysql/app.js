@@ -32,6 +32,14 @@ const con = mysql.createConnection({
 // 	console.log('Connected');
 // });
 
+app.get('/posts', (req, res) => {
+	const sql = "select * from users";
+	con.query(sql, function (err, result, fields) {
+		if (err) throw err;
+		res.render('index', { users: result });
+	});
+});
+
 app.get('/', (req, res) => {
 	const sql = "select * from users";
 	con.query(sql, function (err, result, fields) {
@@ -71,6 +79,15 @@ app.get('/edit/:id', (req, res) => {
 });
 
 app.post('/update/:id', (req, res) => {
+	const sql = "UPDATE users SET ? WHERE id = " + req.params.id;
+	con.query(sql, req.body, function (err, result, fields) {
+		if (err) throw err;
+		console.log(result);
+		res.redirect('/');
+	});
+});
+
+app.post('/login', (req, res) => {
 	const sql = "UPDATE users SET ? WHERE id = " + req.params.id;
 	con.query(sql, req.body, function (err, result, fields) {
 		if (err) throw err;

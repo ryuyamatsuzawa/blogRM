@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
-import Router from '../Router';
+import { useHistory } from 'react-router-dom'
+// import Router from './Router';
 
 function LoginForm( {Login, error} ) {
   const [details, setDetails] = useState({name: "", email: "", password: ""});
+
+  const history = useHistory();
 
   const submitHandler = e => {
     e.preventDefault();
@@ -10,7 +13,7 @@ function LoginForm( {Login, error} ) {
     Login(details);
   }
   return (
-    <form onSubmit={login}>
+    <form onSubmit={submitHandler}>
       <div className="form-inner">
         <h2>Login</h2>
         {(error !== "") ? ( <div className="error">{error}</div> ) : ""}
@@ -26,7 +29,9 @@ function LoginForm( {Login, error} ) {
           <label htmlFor="password">Password:</label>
           <input type="password" name="password" id="password" onChange={e => setDetails({...details, password: e.target.value})} value={details.password} />
         </div>
-        <input type="submit" value="LOGIN" />
+        <button onClick={() => history.push('/')}>
+          Login
+        </button>
         
 
       </div>
