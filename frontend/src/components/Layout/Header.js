@@ -8,7 +8,7 @@ const headers = () => {
     <AppBar position="static">
       <Toolbar>
         <Typography variant="headline" color="colorSecondary" noWrap>
-          Simple Blog Example
+         RM BLOG
         </Typography>
       </Toolbar>
     </AppBar>

@@ -7,7 +7,9 @@ class Posts extends Component {
     render() { 
         return ( 
             <form className="col-md-10">
-                <legend className="text-center">Post Listing Page</legend>
+                <div className="text-center" style={{textAlign:'center', fontWeight: 'bold', fontSize: '24px'}}>
+                    投稿一覧
+                </div>
                 <Listing 
                     posts={this.props.posts} 
                     deletePost={this.props.deletePost} 

@@ -24,35 +24,38 @@ class EditPost extends Component {
  
         return (    
             <form onSubmit={this.editPost} className="col-md-10">
-                <legend className="text-center">Edit Post</legend>
+                <div className="text-center" style={{textAlign:'center', fontWeight: 'bold', fontSize: '24px'}}>
+                    編集画面
+                </div>
  
                 <div className="form-group">
-                    <label>Title for the Post:</label>
+                    <label>タイトル:</label>
                     <input type="text" ref={this.titleRef} className="form-control" defaultValue={title} />
                 </div>
  
                 <div className="form-group">
-                    <label>Author:</label>
+                    <label>著者:</label>
                     <input type="text" ref={this.authorRef} className="form-control" defaultValue={author} />
                 </div>
  
                 <div className="form-group">
-                    <label>Content:</label>
+                    <label>内容:</label>
                     <textarea className="form-control" rows="7"cols="25" ref={this.contentRef} defaultValue={body}></textarea>
                 </div>
  
                 <div className="form-group">
-                    <label>Category: </label>
+                    <label>カテゴリー: </label>
                 <select ref={this.categoryRef} className="form-control" defaultValue={category}>
                     <option value="cars">Cars</option>
                     <option value="nature">Nature</option>
                     <option value="it">IT</option>
                     <option value="books">Books</option>
                     <option value="sport">Sport</option>
+                    <option value="other">Other</option>
                 </select>
                 </div>
  
-                <button type="submit" className="btn btn-primary" >Save changes</button>
+                <button type="submit" className="btn btn-primary" style={{width:'100px', height:'50px', backgroundColor:'#87cefa'}}>更新</button>
             </form>
         );
     }

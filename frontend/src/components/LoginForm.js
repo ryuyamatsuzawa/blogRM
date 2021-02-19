@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-// import Router from './Router';
 
 function LoginForm( {Login, error} ) {
   const [details, setDetails] = useState({name: "", email: "", password: ""});
@@ -13,7 +12,7 @@ function LoginForm( {Login, error} ) {
     Login(details);
   }
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} id="login-pages">
       <div className="form-inner">
         <h2>Login</h2>
         {(error !== "") ? ( <div className="error">{error}</div> ) : ""}
@@ -32,8 +31,6 @@ function LoginForm( {Login, error} ) {
         <button onClick={() => history.push('/')}>
           Login
         </button>
-        
-
       </div>
     </form>
   )
