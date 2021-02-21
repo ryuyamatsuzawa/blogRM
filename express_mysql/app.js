@@ -96,6 +96,15 @@ app.post('/login', (req, res) => {
 	});
 });
 
+app.post('/myPage', (req, res) => {
+	const sql = "UPDATE users SET ? WHERE id = " + req.params.id;
+	con.query(sql, req.body, function (err, result, fields) {
+		if (err) throw err;
+		console.log(result);
+		res.redirect('/');
+	});
+});
+
 app.get('/delete/:id', (req, res) => {
 	const sql = "DELETE FROM users WHERE id = ?";
 	con.query(sql, [req.params.id], function (err, result, fields) {
