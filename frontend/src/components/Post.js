@@ -11,14 +11,14 @@ class Post extends Component {
         const {id} = this.props.info;
  
         Swal.fire({
-                title: 'Delete this one?',
-                text: "This action can not be canceled!",
-                type: 'warning',
+                title: '削除してもよろしいですか？',
+                text: "このアクションはキャンセルできません",
+                type: '警告',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete',
-                cancelButtonText: 'No, Cancel'
+                confirmButtonText: 'はい, 削除します',
+                cancelButtonText: 'いいえ, キャンセルします'
           }).then((result) => {
             if (result.value) {
                 this.props.deletePost(id)
@@ -54,9 +54,9 @@ class Post extends Component {
                 <p className="post_datestamp"><b>{moment(datestamp).fromNow()}</b></p>                
                     <div className="post_button">
                         <ul className="buttons">
-                            <li><Link to={`/post/${id}`} className="btn btn-primary"> Show </Link></li>
-                            <li><Link to={`/edit/${id}`} className="btn btn-warning"> Edit </Link></li>
-                            <li><Link onClick={this.confirmDeletion} className="btn btn-danger">Delete</Link></li>
+                            <li><Link to={`/post/${id}`} className="btn btn-primary"> 閲覧 </Link></li>
+                            <li><Link to={`/edit/${id}`} className="btn btn-warning"> 編集 </Link></li>
+                            <li><Link onClick={this.confirmDeletion} className="btn btn-danger">削除</Link></li>
                         </ul>
                     </div>                   
             </Paper>

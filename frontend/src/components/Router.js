@@ -31,6 +31,7 @@ class Router extends Component {
 
   getPost = () => {
     axios.get(`https://jsonplaceholder.typicode.com/posts`)
+    // axios.get(`https://localhost:4000/posts`)
       .then(res => {
         this.setState({
           posts: res.data
@@ -59,9 +60,8 @@ class Router extends Component {
       .then(res => {
         if (res.status === 201) {
           Swal.fire(
-            'Post Create',
-            'It is created correctly.',
-            'success'
+            '投稿しました',
+            '成功しました'
           )
 
           let postId = { id: res.data.id };
@@ -94,9 +94,9 @@ class Router extends Component {
       .then(res => {
         if (res.status === 200) {
           Swal.fire(
-            'Post Updated',
-            'The changes were saved correctly.',
-            'success'
+            '投稿を更新しました',
+            '変更は保存されました',
+            '成功'
           )
 
           let postId = res.data.id;

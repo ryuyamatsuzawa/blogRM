@@ -49,7 +49,7 @@ function LoginForm( {Login, error} ) {
   }
   return (
     <form onSubmit={submitHandler} id="login-pages">
-      <div className="form-inner">
+      <div className="login-container">
         <h2>Login</h2>
         {(error !== "") ? ( <div className="error">{error}</div> ) : ""}
         <div className="form-group">
@@ -64,9 +64,7 @@ function LoginForm( {Login, error} ) {
           <label htmlFor="password">Password:</label>
           <input type="password" name="password" id="password" onChange={e => setDetails({...details, password: e.target.value})} value={details.password} />
         </div>
-        <button onClick={() => history.push('/')}>
-          Login
-        </button>
+        <button onClick={() => history.push('/')}>Login</button>
 
          {/* <h1>Login</h1>
         <label htmlFor="username">username</label>

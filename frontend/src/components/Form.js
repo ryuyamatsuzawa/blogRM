@@ -25,17 +25,15 @@ class Form extends Component {
  
     render() { 
         return ( 
-            <form onSubmit={this.createPost} className="col-md-10">
-                <div className="text-center" style={{textAlign:'center', fontWeight: 'bold', fontSize: '24px'}}>
-                   新規投稿画面
-                </div>
- 
+            <form onSubmit={this.createPost} className="col-md-10" id="create-new-post">
+                 <div className="login-container">
+                <h2> 新規投稿画面</h2>
                 <div className="form-group">
                     <label>タイトル:</label>
                     <input type="text" ref={this.titleRef} className="form-control" placeholder="Title.." />
                 </div>
  
-                <div className="form-group">
+                <div className="form-group"> 
                     <label>著者:</label>
                     <input type="text" ref={this.authorRef} className="form-control" placeholder="Tag your name.." />
                 </div>
@@ -56,7 +54,8 @@ class Form extends Component {
                     <option value="other">Other</option>
                 </select>
                 </div>
-                <button type="submit" className="btn btn-primary" style={{width:'100px', height:'50px', backgroundColor:'#87cefa'}}>Create</button>
+                <button type="submit" className="btn btn-primary" style={{width:'100px', height:'50px', backgroundColor:'#87cefa'}}>作成</button>
+                </div>
             </form>
          );
     }

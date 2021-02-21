@@ -17,15 +17,9 @@ code {
   padding: 0;
 }
 
+/* ログインページと新規投稿画面 */
 
-#login-page #login-pages input, button {
-  appearance: none;
-  background: none;
-  border: none;
-  outline: none;
-}
-
-#login-page #login-pages .App {
+#login-pages {
   height: 100vh;
   display: flex;
   align-items: center;
@@ -33,45 +27,43 @@ code {
   background-color: #53565A;
 }
 
-#login-page #login-pages form {
-  display: block;
-  position: relative;
-} 
 
-#login-page #login-pages form:after {
-  content: '';
-  display: block;
-  position:  absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  z-index: 1;
-  background-image: linear-gradient(to bottom right, #FFCE00, #FE4880);
+#update-post, #create-new-post, #show-single-post {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #aebfd4;
 }
 
-#login-page #login-pages form .form-inner {
-  position: relative;
-  display: block;
-  background-color: #FFF;
-  padding: 30px;
-  z-index: 2;
+#login-pages .login-container {
+background-color: #F4FA58;
+padding: 20px;
 }
 
-#login-page #login-pages form .form-inner h2 {
-  color: #888;
-  font-size: 28px;
-  font-weight: 500;
-  margin-bottom: 30px;
+#create-new-post .login-container, #update-post .update-container {
+background-color: white;
+padding: 50px;
 }
 
-#login-page #login-pages form .form-inner .form-group {
+#show-single-post .single_post {
+background-color: white;
+padding: 50px;
+width: 500px;
+}
+
+#show-single-post .single_post p {
+  padding: 20px;
+}
+
+#update-post .form-group, #create-new-post .form-group, #login-pages .form-group {
   display: block;
   width: 300px;
   margin-bottom: 15px;
+  padding: 5px;
 }
 
-#login-page #login-pages .form-inner .form-group label {
+#login-pages .form-group label {
   display: block;
   color: #666;
   font-size: 12px;
@@ -79,57 +71,46 @@ code {
   transition: 0.4s;
 }
 
-#login-page #login-pages .form-inner .form-group:focus-within label {
-  color: #FE4880;
+#create-new-post .form-group label, #update-post .form-group label{
+  display: block;
+  color: #666;
+  font-size: 12px;
+  margin-bottom: 5px;
+  transition: 0.4s;
 }
 
-#login-page #login-pages form .form-inner .form-group input {
+#login-pages .form-group input {
   display: block;
   width: 100%;
-  padding:  10px 15px;
-  background-color: #F8F8F8;
-  border-radius: 8px;
+  padding:  5px 0;
   transition: 0.4s;
 }
 
-#login-page #login-pages form .form-inner .form-group input:focus {
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
-}
-
-#login-page #login-pages form .form-inner input[type="submit"],
-.welcome button {
-  display: inline-block;
-  padding: 10px 15px;
-  border-radius: 8px;
-  background-image: linear-gradient(to right, #FFCE00 50%, #FFCE00 50%, #FE4880);;
-  background-size: 200%;
-  background-position: 0%;
-  transition: 0.4s;
-  color: #FFF;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-#login-page #login-pages form .form-inner input[type="submit"]:hover,
-.welcome button:hover {
-  background-position: 100% 0%;
-}
-
-#login-page #login-pages .welcome {
+#create-new-post .form-group .form-control, #update-post .form-group .form-control{
+  display: block;
   width: 100%;
-  max-width: 480px;
-  background-color: #fff;
-  padding: 15px 30px;
+  padding:  5px 0;
+  transition: 0.4s;
 }
 
-#login-page #login-pages .welcome h2 {
-  color: #888;
-  font-size: 28px;
-  font-weight: 500;
-  margin-bottom: 30px;
+/* 投稿一覧Show,Edit,Deleteボタン */
+.post_button ul li {
+  margin-right: 10px;
 }
 
-#login-page #login-pages .welcome h2 span {
-  color: #FE4880;
-  font-weight: 700;
-} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

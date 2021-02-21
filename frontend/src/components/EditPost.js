@@ -23,11 +23,9 @@ class EditPost extends Component {
         const {title, author, body, category} = this.props.post;
  
         return (    
-            <form onSubmit={this.editPost} className="col-md-10">
-                <div className="text-center" style={{textAlign:'center', fontWeight: 'bold', fontSize: '24px'}}>
-                    編集画面
-                </div>
- 
+            <form onSubmit={this.editPost} className="col-md-10" id="update-post">
+                <div className="update-container">
+                <h2>編集画面</h2>
                 <div className="form-group">
                     <label>タイトル:</label>
                     <input type="text" ref={this.titleRef} className="form-control" defaultValue={title} />
@@ -56,6 +54,7 @@ class EditPost extends Component {
                 </div>
  
                 <button type="submit" className="btn btn-primary" style={{width:'100px', height:'50px', backgroundColor:'#87cefa'}}>更新</button>
+                </div>
             </form>
         );
     }
