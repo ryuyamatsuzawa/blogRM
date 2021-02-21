@@ -1,8 +1,8 @@
 // import { createSlice } from "@reduxjs/toolkit";
-// import { login as loginApi, currentUser } from "../api/auth";
+// import { login as loginApi } from "../api/auth";
 
 // const initialState = {
-//   user: null,
+//   user: null, // ユーザー情報の格納場所
 // };
 
 // const slice = createSlice({
@@ -17,24 +17,14 @@
 
 // export default slice.reducer;
 
+// // 認証済みか確認するセレクター
 // export const isAuthSelector = state => state.auth.user !== null;
 
+// // ログイン機能
 // export function login(username, password) {
 //   return async function(dispatch) {
 //     const user = await loginApi(username, password);
+//     // ログイン後にユーザー情報をストアに格納する
 //     dispatch(slice.actions.setUser(user));
 //   }
-// }
-
-// export function setCurrentUser() {
-//   return async function(dispatch) {
-//     try {
-//       const user = await currentUser();
-//       dispatch(slice.actions.setUser(user));
-//     } catch(err) {
-//        // 未認証の場合は 403 などのエラーが発生する想定だが、
-//     // 初期状態でログインしていないことは異常ではないので
-//     // 特にハンドリングはしない
-//   }
-// }
 // }

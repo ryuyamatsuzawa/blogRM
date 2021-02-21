@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Provider } from "react-redux";
+// import { Provider } from "react-redux";
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Header } from './Layout/Layout';
-import store from "./store/";
+// import store from "./store/";
 import Posts from './Posts';
 import SinglePost from './SinglePost';
 import Form from './Form';

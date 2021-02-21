@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import LoginForm from './LoginForm';
 // import Router from './Router';
-import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { createSlice } from "@reduxjs/toolkit";
-import { login as loginApi, currentUser } from "../components/api/auth";
+// import { useHistory } from "react-router-dom";
+// import { useDispatch } from "react-redux";
+// import { createSlice } from "@reduxjs/toolkit";
+// import { login as loginApi, currentUser } from "../components/api/auth";
 
 
   // const initialState = {
@@ -26,13 +26,13 @@ import { login as loginApi, currentUser } from "../components/api/auth";
   // 認証済みか確認するセレクター
   //  export const isAuthSelector = state => state.auth.user !== null;
   
-  //ログイン機能
-    // export function login(username, password) {
-    // return async function(dispatch) {
-    //   const user = await loginApi(username, password)
-    //   // ログイン後にユーザー情報をストアに格納する
-    //   dispatch(slice.actions.setUser(user));
-    // }
+  // // ログイン機能
+  //   export function login(username, password) {
+  //   return async function(dispatch) {
+  //     const user = await loginApi(username, password)
+  //     // ログイン後にユーザー情報をストアに格納する
+  //     dispatch(slice.actions.setUser(user));
+  //   }
   // }
 
 //   export function setCurrentUser() {
@@ -59,16 +59,6 @@ import { login as loginApi, currentUser } from "../components/api/auth";
   const [user, setUser] = useState({ name: "", email: "" });
   const [error, setError] = useState("");
 
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-
-  // const history = useHistory();
-  // const dispatch = useDispatch();
-
-  // const submit = async () => {
-  //   await dispatch(loginApi(username, password));
-  //   history.push("/");
-  // };
 
 
   const Login = details => {
