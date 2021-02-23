@@ -1,70 +1,62 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-// import { useDispatch } from "react-redux";
-// import { createSlice } from "@reduxjs/toolkit";
-// import { login as loginApi, currentUser } from "../components/api/auth";
+import Axios from 'axios'
 
-// const initialState = {
-//   user: null, // ユーザー情報の格納場所
-// };
+function LoginForm() {
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
-// const slice = createSlice({
-//   name: "auth",
-//   initialState,
-//   reducers: {
-//     setUser: (state, action) => {
-//       return Object.assign({}, state, { user: action.payload });
-//     }
-//   }
-// });
+  const [loginStatus, setLoginstatus] = useState('')
 
+  const login = () => {
+    Axios.post('http://localhost:4000/login', {
+      username: username,
+      email: email,
+      password: password,
+    }).then((response) => {
+      if(response.data.messeage){
+        setLoginstatus(response.data.message)
+      } else {
+        setLoginstatus(response.data[0].username)
+      }
+    });
+  };
 
-//  // ログイン機能
-//  export function login(username, password) {
-//   return async function(dispatch) {
-//     const user = await loginApi(username, password)
-//     // ログイン後にユーザー情報をストアに格納する
-//     dispatch(slice.actions.setUser(user));
-//   }
-// }
-
-function LoginForm( {Login, error} ) {
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-
-  const [details, setDetails] = useState({name: "", email: "", password: ""});
+  // const [details, setDetails] = useState({name: "", email: "", password: ""});
 
   const history = useHistory();
-  // const dispatch = useDispatch();
 
-  // const submit = async () => {
-  //   await dispatch(loginApi(details.name, details.email, details.password));
-  //   history.push("/");
-  // };
+  // const submitHandler = e => {
+  //   e.preventDefault();
 
-  const submitHandler = e => {
-    e.preventDefault();
-
-    Login(details);
-  }
+  //   LoginForm();
+  //   // Login(details);
+  // }
   return (
-    <form onSubmit={submitHandler} id="login-pages">
+    <form id="login-pages">
       <div className="login-container">
         <h2>Login</h2>
-        {(error !== "") ? ( <div className="error">{error}</div> ) : ""}
+        {/* {(error !== "") ? ( <div className="error">{error}</div> ) : ""} */}
         <div className="form-group">
           <label htmlFor="name">Name:</label>
-          <input type="text" name="name" id="name" onChange={e => setDetails({...details, name: e.target.value})} value={details.name} />
+          <input type="text" name="name" id="name"onChange={e => setUsername(e.target.value)}  value={username} />
+        
         </div>       
         <div className="form-group">
           <label htmlFor="name">Email:</label>
-          <input type="email" name="email" id="email" onChange={e => setDetails({...details, email: e.target.value})} value={details.email} />
+          <input type="email" name="email" id="email" onChange={e => setEmail(e.target.value)}  value={email} />
+        
         </div>      
         <div className="form-group">
           <label htmlFor="password">Password:</label>
-          <input type="password" name="password" id="password" onChange={e => setDetails({...details, password: e.target.value})} value={details.password} />
+          <input type="password" name="password" id="password" onChange={e => setPassword(e.target.value)}  value={password}  /> 
+         
         </div>
         <button onClick={() => history.push('/')}>Login</button>
+        <button onClick={login}>Login</button>
+
+        <h1>{loginStatus}</h1>
 
          {/* <h1>Login</h1>
         <label htmlFor="username">username</label>

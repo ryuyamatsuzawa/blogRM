@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const ejs = require('ejs')
 const app = express()
 const port = 4000
+// const cors = require("cors")
 
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(express.json())
@@ -17,6 +18,7 @@ app.use(function (req, res, next) {
 	next();
 });
 app.set('view engine', 'ejs');
+// app.use(cors())
 
 const mysql = require('mysql');
 
@@ -50,22 +52,12 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
 	const sql = "INSERT INTO users SET ?"
-	con.query(sql,req.body,function(err, result, fields){
+	con.query(sql, req.body, function (err, result, fields) {
 		if (err) throw err;
 		console.log(result);
 		res.redirect('/');
 	});
 });
-// app.post('/register', (req, res) => {
-// 	const username = req.body.username
-// 	const password = req.body.password
-	
-// 	const sql = "INSERT INTO users (userName, password) VALUEA (?,?)"
-// 	con.query(sql, [username, password], (err, result) => {
-// 		console.log(err)
-// 	}
-// 	);
-// });
 
 app.get('/create', (req, res) =>
 	res.sendFile(path.join(__dirname, 'html/form.html')))
@@ -87,14 +79,36 @@ app.post('/update/:id', (req, res) => {
 	});
 });
 
+// app.post('/login', (req, res) => {
+// 	const sql = "UPDATE users SET ? WHERE id = " + req.params.id;
+// 	con.query(sql, req.body, function (err, result, fields) {
+// 		if (err) throw err;
+// 		console.log(result);
+// 		res.redirect('/');
+// 	});
+// });
+
 app.post('/login', (req, res) => {
-	const sql = "UPDATE users SET ? WHERE id = " + req.params.id;
-	con.query(sql, req.body, function (err, result, fields) {
-		if (err) throw err;
-		console.log(result);
-		res.redirect('/');
-	});
+	const username = req.body.username
+	const email = req.body.email
+	const password = req.body.password
+	con.query(
+		"SELECT * FROM users WHERE username = ? AND pasword = ?",
+		[username, email, password],
+		(err, result) => {
+			if (err) {
+			return	res.send({err: err})
+			}
+
+			if (result) {
+			return	res.send(result)
+			} else {
+			return	res.send({ message: "ユーザネーム、メールアドレス、パスワードのいずれかが間違っています" });
+			}
+		}
+	);
 });
+
 
 app.post('/myPage', (req, res) => {
 	const sql = "UPDATE users SET ? WHERE id = " + req.params.id;
@@ -113,6 +127,21 @@ app.get('/delete/:id', (req, res) => {
 		res.redirect('/');
 	})
 });
+
+app.post('/register', (req, res) => {
+	console.log(req);
+	const name = req.body.username
+	const email = req.body.email
+	const password = req.body.password
+	con.query(
+		"INSERT INTO users (name, email, password) VALUES (?,?,?)",
+		[name, email, password],
+		(err, result) => {
+			console.log(err)
+		}
+	);
+});
+
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

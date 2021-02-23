@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-// import { Provider } from "react-redux";
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Header } from './Layout/Layout';
-// import store from "./store/";
 import Posts from './Posts';
 import SinglePost from './SinglePost';
 import Form from './Form';
 import EditPost from './EditPost';
-import Login from './Login'
+import LoginForm from './LoginForm'
 import Menu from './Menu'
 import Home from './Home'
 import MyPage from './MyPage'
-import PrivateRoute from "./PrivateRoute";
-import GuestRoute from './GuestRoute';
+import Register from './Register'
 
 //Component Classを継承している。renderを呼ぶ。
 class Router extends Component {
@@ -73,19 +70,6 @@ class Router extends Component {
         }
       })
   }
-  login = (userName,name) => {
-    axios.post(`http://localhost:4000/login`, { userName,name })
-      .then(res => {
-        console.log(res)
-      })
-  }
-  
-  myPage = () => {
-    axios.post(`http://localhost:4000/myPage`, { })
-      .then(res => {
-        console.log(res)
-      })
-  }
 
   editPost = (postUpdate) => {
     const { id } = postUpdate;
@@ -113,6 +97,20 @@ class Router extends Component {
       })
   }
 
+  login = (userName,name) => {
+    axios.post(`http://localhost:4000/login`, { userName,name })
+      .then(res => {
+        console.log(res)
+      })
+  }
+  
+  myPage = () => {
+    axios.post(`http://localhost:4000/myPage`, { })
+      .then(res => {
+        console.log(res)
+      })
+  }
+
   render() {
     return (
       // <Provider store={store}>
@@ -124,8 +122,9 @@ class Router extends Component {
               <Menu />
               <Switch>
                 <Route path="/" exact children={<Home />} />
-                <GuestRoute path="http://localhost:4000/login" children={<Login />} />
-                <PrivateRoute path="http://localhost:4000/myPage" children={<MyPage />} />
+                <Route path="http://localhost:4000/login" children={<LoginForm />} />
+                <Route path="http://localhost:4000/myPage" children={<MyPage />} />
+                <Route path="http://localhost:4000/register" children={<Register />} />
               </Switch>
 
               <Switch>
@@ -140,8 +139,13 @@ class Router extends Component {
 
                 <Route exact path="/login" render={() => {
                   return (
-                    <Login  login={this.login} />
-                     // <Login />
+                    <LoginForm  login={this.login} />
+                  );
+                }} />
+
+                <Route exact path="/register" render={() => {
+                  return (
+                    <Register />
                   );
                 }} />
 
