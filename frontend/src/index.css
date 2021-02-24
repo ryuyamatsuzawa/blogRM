@@ -28,7 +28,7 @@ code {
 }
 
 
-#update-post, #create-new-post, #show-single-post {
+#update-post, #create-new-post, #show-single-post, #register-pages{
   height: 100vh;
   display: flex;
   align-items: center;
@@ -41,7 +41,7 @@ background-color: #F4FA58;
 padding: 20px;
 }
 
-#create-new-post .login-container, #update-post .update-container {
+#create-new-post .login-container, #update-post .update-container,  #register-pages .login-container{
 background-color: white;
 padding: 50px;
 }
@@ -56,7 +56,7 @@ width: 500px;
   padding: 20px;
 }
 
-#update-post .form-group, #create-new-post .form-group, #login-pages .form-group {
+#update-post .form-group, #create-new-post .form-group, #login-pages .form-group, #register-pages .form-group{
   display: block;
   width: 300px;
   margin-bottom: 15px;
@@ -71,7 +71,7 @@ width: 500px;
   transition: 0.4s;
 }
 
-#create-new-post .form-group label, #update-post .form-group label{
+#create-new-post .form-group label, #update-post .form-group label, #register-pages .form-group label{
   display: block;
   color: #666;
   font-size: 12px;
@@ -86,7 +86,7 @@ width: 500px;
   transition: 0.4s;
 }
 
-#create-new-post .form-group .form-control, #update-post .form-group .form-control{
+#create-new-post .form-group .form-control, #update-post .form-group .form-control,  #register-pages .form-group .form-control{
   display: block;
   width: 100%;
   padding:  5px 0;

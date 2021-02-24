@@ -124,7 +124,7 @@ class Router extends Component {
                 <Route path="/" exact children={<Home />} />
                 <Route path="http://localhost:4000/login" children={<LoginForm />} />
                 <Route path="http://localhost:4000/myPage" children={<MyPage />} />
-                <Route path="http://localhost:4000/register" children={<Register />} />
+                <Route path="http://localhost:4000/register"  children={<Register />} />
               </Switch>
 
               <Switch>

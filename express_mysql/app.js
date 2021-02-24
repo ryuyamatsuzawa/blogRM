@@ -4,7 +4,6 @@ const bodyParser = require('body-parser')
 const ejs = require('ejs')
 const app = express()
 const port = 4000
-// const cors = require("cors")
 
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(express.json())
@@ -83,7 +82,7 @@ app.post('/login', (req, res) => {
 	const email = req.body.email
 	const password = req.body.password
 	con.query(
-		"SELECT * FROM users WHERE username = ? AND pasword = ?",
+		"SELECT * FROM users WHERE username = ? AND email = ? AND password = ?",
 		[username, email, password],
 		(err, result) => {
 			if (err) {

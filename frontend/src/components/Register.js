@@ -18,19 +18,19 @@ export default function Register() {
   };
 
   return (
-    <form action="/" method="POST">
+    <form id="register-pages">
     <div className="login-container">
       <h2>ユーザ登録</h2>
       <div className="form-group">
-        <label htmlFor="name">Name:</label>
+        <label htmlFor="name">名前:</label>
         <input type="text" name="name" id="name" onChange={e => setUsernameReq(e.target.value)} value={usernameReq} />
       </div>
       <div className="form-group">
-        <label htmlFor="name">Email:</label>
+        <label htmlFor="name">メールアドレス:</label>
         <input type="email" name="email" id="email" onChange={e => setEmailReq(e.target.value)} value={emailReq} />
       </div>
       <div className="form-group">
-        <label htmlFor="password">Password:</label>
+        <label htmlFor="password">パスワード:</label>
         <input type="password" name="password" id="password" onChange={e => setPasswordReq(e.target.value)} value={passwordReq} />
       </div>
       <button onClick={register}>登録</button>
