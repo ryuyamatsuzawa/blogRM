@@ -18,7 +18,6 @@ app.use(function (req, res, next) {
 	next();
 });
 app.set('view engine', 'ejs');
-// app.use(cors())
 
 const mysql = require('mysql');
 
@@ -78,15 +77,6 @@ app.post('/update/:id', (req, res) => {
 		res.redirect('/');
 	});
 });
-
-// app.post('/login', (req, res) => {
-// 	const sql = "UPDATE users SET ? WHERE id = " + req.params.id;
-// 	con.query(sql, req.body, function (err, result, fields) {
-// 		if (err) throw err;
-// 		console.log(result);
-// 		res.redirect('/');
-// 	});
-// });
 
 app.post('/login', (req, res) => {
 	const username = req.body.username

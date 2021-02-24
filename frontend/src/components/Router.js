@@ -28,7 +28,7 @@ class Router extends Component {
 
   getPost = () => {
     axios.get(`https://jsonplaceholder.typicode.com/posts`)
-    // axios.get(`https://localhost:4000/posts`)
+    // axios.get(`http://localhost:4000/posts`)
       .then(res => {
         this.setState({
           posts: res.data

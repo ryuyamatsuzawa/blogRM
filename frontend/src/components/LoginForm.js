@@ -53,7 +53,7 @@ function LoginForm() {
           <input type="password" name="password" id="password" onChange={e => setPassword(e.target.value)}  value={password}  /> 
          
         </div>
-        <button onClick={() => history.push('/')}>Login</button>
+        {/* <button onClick={() => history.push('/')}>Login</button> */}
         <button onClick={login}>Login</button>
 
         <h1>{loginStatus}</h1>
