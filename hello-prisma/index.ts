@@ -4,11 +4,8 @@ const prisma = new PrismaClient()
 
 async function main() {
   // ... you will write your Prisma Client queries 
-  const post = await prisma.post.update({
-    where: { id: 1 },
-    data: { published: true },
-  })
-  console.log(post)
+  const user = await prisma.user.findMany()
+  console.log(user)
 }
 
 main()

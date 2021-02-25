@@ -98,7 +98,6 @@ app.post('/login', (req, res) => {
 	);
 });
 
-
 app.post('/myPage', (req, res) => {
 	const sql = "UPDATE users SET ? WHERE id = " + req.params.id;
 	con.query(sql, req.body, function (err, result, fields) {
