@@ -8,6 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@prisma/cli": "2",
+    "@prisma/client": "2",
     "classnames": "^2.2.6",
     "date-fns": "^2.17.0",
     "gray-matter": "^4.0.2",
