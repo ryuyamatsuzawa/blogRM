@@ -25,4 +25,5 @@ const handler: NextApiHandler = async (req, res) => {
     res.json({ ok: false, error });
   }
 };
+
 export default handler;
