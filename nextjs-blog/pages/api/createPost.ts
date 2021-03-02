@@ -1,4 +1,4 @@
-import type { NextApiHandler } from "next";
+import { NextApiHandler } from "next";
 import prisma from "../../lib/prisma";
 import * as z from "zod";
 
