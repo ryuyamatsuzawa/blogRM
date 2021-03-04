@@ -1,18 +1,18 @@
 import useSWR from 'swr'
 import React from "react";
-import { PostForm } from "../components/PostForm";
-import { Posts } from "./api/getPosts"
+import { UserForm } from "../components/UserForm";
+import { Users } from "./api/getUsers"
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
-const CreatePost = () => {
-  const { data, error } = useSWR<Posts>(`/api/getPosts`, fetcher)
+const CreateUser = () => {
+  const { data, error } = useSWR<Users>(`/api/getUsers`, fetcher)
   if (error) return <div>failed to load</div>
   if (!data) return <div>loading...</div>
 
   return (
-      <PostForm />
+      <UserForm />
   );
 }
 
-export default CreatePost
+export default CreateUser

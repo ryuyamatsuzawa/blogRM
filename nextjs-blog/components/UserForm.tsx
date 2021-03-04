@@ -2,10 +2,10 @@ import { useCallback } from "react";
 import { Form, Field } from "react-final-form";
 import { useRouter } from "next/router";
 
-export function PostForm() {
+export function UserForm() {
   const router = useRouter();
   const onSubmit = useCallback(async (formData) => {
-    const res = await fetch("/api/createPost", {
+    const res = await fetch("/api/createUser", {
       method: "POST",
       body: JSON.stringify(formData),
       headers: {
@@ -14,7 +14,7 @@ export function PostForm() {
     });
     const json = await res.json();
     if (json.ok) {
-      router.push("/");
+      router.push("/postedUser");
     } else {
       alert(JSON.stringify(json));
     }
@@ -26,36 +26,36 @@ export function PostForm() {
         return (
           <form onSubmit={handleSubmit}>
             <Field<HTMLInputElement>
-              name="title"
-              placeholder="title"
+              name="name"
+              placeholder="name"
               render={(props) => {
                 return (
                   <div>
-                     <label>タイトル:</label>
+                     <label>名前:</label>
                     <input
                       {...(props.input as any)}
-                      style={{ width: "40vw" }}
+                      style={{ width: "20vw" }}
                     />
                   </div>
                 );
               }}
             />
-            <Field<HTMLTextAreaElement>
-              name="content"
-              placeholder="content"
+            <Field<HTMLInputElement>
+              name="email"
+              placeholder="email"
               render={(props) => {
                 return (
                   <div>
-                     <label>内容:</label>
-                    <textarea
+                     <label>メールアドレス:</label>
+                    <input
                       {...(props.input as any)}
-                      style={{ width: "40vw", height: "200px" }}
+                      style={{ width: "20vw" }}
                     />
                   </div>
                 );
               }}
             />
-            <button type="submit">Submit</button>
+            <button type="submit">登録</button>
           </form>
         );
       }}

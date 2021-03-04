@@ -1,12 +1,12 @@
 import prisma, { Post } from "../../lib/prisma";
 import type { NextApiHandler } from 'next'
 
-export type Posts = Pick<Post, "id" | "title" | "content">[];
 //pickじゃなくてemitを使うと全体の型から省略できる。
+export type Posts = Pick<Post, "id" | "title" | "content">[];
 
 const getPost: NextApiHandler = async (req, res) => {
   try {
-  const posts = await prisma.post.findMany({
+    const posts = await prisma.post.findMany({
     //selectをつかうと（Prismaのドキュメント）、trueのやつのみ返せる。
       select: {
         title: true,
