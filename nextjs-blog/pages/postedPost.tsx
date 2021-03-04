@@ -1,6 +1,7 @@
 import React from "react";
-import useSWR from 'swr'
-import { Posts } from "./api/getPosts"
+import useSWR from 'swr';
+import { Posts } from "./api/getPosts";
+import Divider from '@material-ui/core/Divider';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
@@ -20,11 +21,12 @@ const PostedPost = () => {
               <div className="postDetail">
                 <div className="postForm">
                   <label htmlFor="postedTitle">タイトル:</label>
-                  <h3 id="postedTitle">{post.title}</h3>
+                  <p className="postedTitle">{post.title}</p>
                 </div>
+                <Divider light />
                 <div className="postForm">
                   <label htmlFor="postedContent">内容:</label>
-                  <p id="postedContent">{post.content}</p>
+                  <p className="postedContent">{post.content}</p>
                 </div>
               </div>
             </React.Fragment>

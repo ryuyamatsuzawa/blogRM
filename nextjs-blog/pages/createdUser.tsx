@@ -1,7 +1,7 @@
-import useSWR from 'swr'
+import useSWR from 'swr';
 import React from "react";
 import { UserForm } from "../components/UserForm";
-import { Users } from "./api/getUsers"
+import { Users } from "./api/getUsers";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 

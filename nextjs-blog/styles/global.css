@@ -45,24 +45,43 @@ img {
 }
 
 #postList .postContainer {
-  display: flex;
-  flex-wrap: wrap;
+  /* グリッド使用 */
+  display: grid;
+
+  /* 繰り返し指定 + 要素の幅 */
+  grid-template-columns: repeat(auto-fit, 400px);
+
+  /* 要素の高さ */
+  grid-auto-rows: 300px; 
+
+  /* 要素の間隔 */
+  grid-gap: 20px;
+
+  /* 全体をセンタリング */
   justify-content: center;
-  align-items: center;
 }
 
 #postList .postDetail {
   color: black;
   border: 2px solid rgb(52, 137, 170);
   background-color: #d2e4db;
-  width: 400px;
-  margin: 20px;
+  margin: 10px;
   display: block;
   padding: 10px;
+  width: 100%;
 }
 
 #postList .postForm {
   padding:  5px 10px;
+  width: 100%;
+}
+
+#postList p {
+  width: 100%;
+  -webkit-box-sizing: border-box;  /*webkit系*/
+  -moz-box-sizing: border-box;  /*Firefox*/
+  box-sizing: border-box;
+  word-wrap: break-word;
 }
 
 #postList .postForm label {

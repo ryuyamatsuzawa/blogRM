@@ -1,8 +1,6 @@
 import React from "react";
-import useSWR from 'swr'
-import { Users } from "./api/getUsers"
-
-
+import useSWR from 'swr';
+import { Users } from "./api/getUsers";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
