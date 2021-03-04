@@ -26,3 +26,150 @@ img {
   max-width: 100%;
   display: block;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* //////POST PAGE////// */
+
+#postList {
+  background-color: #fff;
+  height: 100vh;
+  padding: 40px;
+}
+
+#postList h1 {
+  text-align: center;
+}
+
+#postList .postContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#postList .postDetail {
+  color: black;
+  border: 2px solid rgb(52, 137, 170);
+  background-color: #d2e4db;
+  width: 400px;
+  margin: 20px;
+  display: block;
+  padding: 10px;
+}
+
+#postList .postForm {
+  padding:  5px 10px;
+}
+
+#postList .postForm label {
+  display: block;
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+#createPost {
+ background-color: #d2e4db;
+ height: 100vh;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+#createPost .createContainer {
+  background-color: white;
+  padding: 50px;
+}
+
+#createPost .createFormGroup {
+  display: block;
+  margin-bottom: 15px;
+  padding: 5px;
+}
+
+#createPost .createFormGroup label{
+  display: block;
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+#createPost h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  }
+
+/* //////USER PAGE////// */
+
+#userList {
+  background-color: #fff;
+  height: 100vh;
+  padding: 40px;
+}
+
+#userList h1 {
+  text-align: center;
+}
+
+#userList .userContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#userList .userDetail {
+  color: black;
+  border: 2px solid rgb(52, 137, 170);
+  background-color: #d2e4db;
+  width: 400px;
+  margin: 10px;
+  display: block;
+  padding: 10px;
+}
+
+#userList .userForm {
+  padding:  5px 10px;
+}
+
+#userList .userForm label {
+  display: block;
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+#createUser {
+ background-color: #d2e4db;
+ height: 100vh;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+#createUser .createContainer {
+  background-color: white;
+  padding: 50px;
+}
+
+#createUser .createFormGroup {
+  display: block;
+  margin-bottom: 15px;
+  padding: 5px;
+}
+
+#createUser .createFormGroup label{
+  display: block;
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+#createUser h2 {
+text-align: center;
+margin-bottom: 10px;
+}

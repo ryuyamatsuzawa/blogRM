@@ -12,20 +12,28 @@ const PostedUser = () => {
   if (!data) return <div>loading...</div>
 
   return (
-    <>
+    <div id="userList">
+      <h1>ユーザー情報一覧</h1>
       <div>全体で{data.length}人のユーザーがいます</div>
-      {data.map((user) => {
-        return (
-          <>
-          <label htmlFor="postedTitle">ユーザー情報:</label>
-          <div key={user.id}>
-            <p>{user.name}</p>
-            <p>{user.email}</p>
-          </div>
-          </>
-        );
-      })}
-    </>
+      <div className="userContainer">
+        {data.map((user) => {
+          return (
+            <React.Fragment key={user.id}>
+              <div className="userDetail">
+                <div className="userForm">
+                  <label htmlFor="postedName">ユーザー名:</label>
+                  <p id="postedName">{user.name}</p>
+                </div>
+                <div className="userForm">
+                  <label htmlFor="postedEmail">メールアドレス:</label>
+                  <p id="postedEmail">{user.email}</p>
+                </div>
+              </div>
+            </React.Fragment>
+          );
+        })}
+      </div>
+    </div>
   );
 }
 

@@ -14,7 +14,7 @@ export function PostForm() {
     });
     const json = await res.json();
     if (json.ok) {
-      router.push("/");
+      router.push("/postedPost");
     } else {
       alert(JSON.stringify(json));
     }
@@ -24,38 +24,46 @@ export function PostForm() {
       onSubmit={onSubmit}
       render={({ handleSubmit }) => {
         return (
-          <form onSubmit={handleSubmit}>
-            <Field<HTMLInputElement>
-              name="title"
-              placeholder="title"
-              render={(props) => {
-                return (
-                  <div>
-                     <label>タイトル:</label>
-                    <input
-                      {...(props.input as any)}
-                      style={{ width: "40vw" }}
-                    />
-                  </div>
-                );
-              }}
-            />
-            <Field<HTMLTextAreaElement>
-              name="content"
-              placeholder="content"
-              render={(props) => {
-                return (
-                  <div>
-                     <label>内容:</label>
-                    <textarea
-                      {...(props.input as any)}
-                      style={{ width: "40vw", height: "200px" }}
-                    />
-                  </div>
-                );
-              }}
-            />
-            <button type="submit">Submit</button>
+          <form onSubmit={handleSubmit} id="createPost">
+            <div className="createContainer">
+            <h2>新規投稿作成</h2>
+              <Field<HTMLInputElement>
+                name="title"
+                placeholder="title"
+                render={(props) => {
+                  return (
+                    <div className="createFormGroup">
+                      <label>タイトル:</label>
+                      <input
+                        {...(props.input as any)}
+                        style={{ width: "20vw" }}
+                        type="text"
+                        required
+                      />
+                    </div>
+                  );
+                }}
+              />
+              <Field<HTMLTextAreaElement>
+                name="content"
+                placeholder="content"
+                render={(props) => {
+                  return (
+                    <div className="createFormGroup">
+                      <label>内容:</label>
+                      <textarea
+                        {...(props.input as any)}
+                        style={{
+                          width: "20vw", height: "100px", alignItems: "center",
+                          justifyContent: "center"
+                        }}
+                      />
+                    </div>
+                  );
+                }}
+              />
+              <button type="submit">投稿</button>
+            </div>
           </form>
         );
       }}

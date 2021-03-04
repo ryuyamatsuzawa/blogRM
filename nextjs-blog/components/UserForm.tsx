@@ -24,38 +24,45 @@ export function UserForm() {
       onSubmit={onSubmit}
       render={({ handleSubmit }) => {
         return (
-          <form onSubmit={handleSubmit}>
-            <Field<HTMLInputElement>
-              name="name"
-              placeholder="name"
-              render={(props) => {
-                return (
-                  <div>
-                     <label>名前:</label>
-                    <input
-                      {...(props.input as any)}
-                      style={{ width: "20vw" }}
-                    />
-                  </div>
-                );
-              }}
-            />
-            <Field<HTMLInputElement>
-              name="email"
-              placeholder="email"
-              render={(props) => {
-                return (
-                  <div>
-                     <label>メールアドレス:</label>
-                    <input
-                      {...(props.input as any)}
-                      style={{ width: "20vw" }}
-                    />
-                  </div>
-                );
-              }}
-            />
-            <button type="submit">登録</button>
+          <form onSubmit={handleSubmit} id="createUser">
+            <div className="createContainer">
+              <h2>アカウント作成</h2>
+              <Field<HTMLInputElement>
+                name="name"
+                placeholder="name"
+                render={(props) => {
+                  return (
+                    <div className="createFormGroup">
+                      <label>名前:</label>
+                      <input
+                        {...(props.input as any)}
+                        style={{ width: "20vw" }}
+                        type="text"
+                        required
+                      />
+                    </div>
+                  );
+                }}
+              />
+              <Field<HTMLInputElement>
+                name="email"
+                placeholder="email"
+                render={(props) => {
+                  return (
+                    <div className="createFormGroup">
+                      <label>メールアドレス:</label>
+                      <input
+                        {...(props.input as any)}
+                        type="email"
+                        style={{ width: "20vw" }}
+                        required
+                      />
+                    </div>
+                  );
+                }}
+              />
+              <button type="submit">登録</button>
+            </div>
           </form>
         );
       }}
