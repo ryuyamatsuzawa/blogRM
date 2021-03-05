@@ -61,6 +61,23 @@ export function UserForm() {
                   );
                 }}
               />
+              <Field<HTMLInputElement>
+                name="password"
+                placeholder="password"
+                render={(props) => {
+                  return (
+                    <div className="createFormGroup">
+                      <label>パスワード:</label>
+                      <input
+                        {...(props.input as any)}
+                        style={{ width: "20vw" }}
+                        type="text"
+                        required
+                      />
+                    </div>
+                  );
+                }}
+              />
               <button type="submit">登録</button>
             </div>
           </form>

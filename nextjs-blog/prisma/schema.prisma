@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://root:ryuya1028@localhost/blogRM"
+  url      = "mysql://root:ryuya1028@localhost/blogRMData"
 }
 
 model Post {
@@ -14,11 +14,21 @@ model Post {
   published Boolean @default(false)
   title     String
   author    User?   @relation(fields: [authorId], references: [id])
+  createdAt DateTime  @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model User {
   email String  @unique
   id    Int     @id @default(autoincrement())
   name  String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime @updatedAt
   posts Post[]
+  password String 
+}
+
+enum Role {
+  USER
+  ADMIN
 }
