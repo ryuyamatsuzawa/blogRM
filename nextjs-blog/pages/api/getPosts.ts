@@ -2,7 +2,7 @@ import prisma, { Post } from "../../lib/prisma";
 import type { NextApiHandler } from 'next'
 
 //pickじゃなくてemitを使うと全体の型から省略できる。
-export type Posts = Pick<Post, "id" | "title" | "content">[];
+export type Posts = Pick<Post, "id" | "title" | "content" | "createdAt" >[];
 
 const getPost: NextApiHandler = async (req, res) => {
   try {
@@ -12,6 +12,7 @@ const getPost: NextApiHandler = async (req, res) => {
         title: true,
         content: true,
         id: true,
+        createdAt: true,
       },
     });
   res.status(200).json(posts);

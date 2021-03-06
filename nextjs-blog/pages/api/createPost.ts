@@ -14,6 +14,7 @@ const handler: NextApiHandler = async (req, res) => {
       data: {
         title: result.title,
         content: result.content,
+        createdAt: (new Date()).toISOString(),
         published: true,
       },
     });

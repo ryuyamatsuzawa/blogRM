@@ -19,6 +19,11 @@ const PostedPost = () => {
           return (
             <React.Fragment key={post.id} >
               <div className="postDetail">
+              <div className="postForm">
+              <label htmlFor="postedDate">作成日:</label>
+              <p className="postedDate">{post.createdAt}</p>
+              </div>
+              <Divider light />
                 <div className="postForm">
                   <label htmlFor="postedTitle">タイトル:</label>
                   <p className="postedTitle">{post.title}</p>

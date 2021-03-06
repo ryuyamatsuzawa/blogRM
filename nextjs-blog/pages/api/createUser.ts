@@ -5,6 +5,7 @@ import * as z from "zod";
 const requestUserSchema = z.object({
   name: z.string(),
   email: z.string(),
+  password: z.string()
 });
 
 const handler: NextApiHandler = async (req, res) => {
@@ -14,6 +15,7 @@ const handler: NextApiHandler = async (req, res) => {
       data: {
         name: result.name,
         email: result.email,
+        password: result.password,
       },
     });
     res.json({

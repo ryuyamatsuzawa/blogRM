@@ -2,7 +2,7 @@ import prisma, { User } from "../../lib/prisma";
 import type { NextApiHandler } from 'next';
 
 //ReadonlyにしたらUserの中のすべてのプロパティを返す
-export type Users = Pick<User, "id" | "name" | "email" | "password" | "createdAt" | "updatedAt">[];
+export type Users = Pick<User, "id" | "name" | "email" | "password" | "createdAt" >[];
 
 const getUser: NextApiHandler = async (req, res) => {
   try {
@@ -12,7 +12,6 @@ const getUser: NextApiHandler = async (req, res) => {
         name: true,
         password: true,
         createdAt: true,
-        updatedAt: true,
       },
     });
     res.status(200).json(users)
