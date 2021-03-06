@@ -71,7 +71,7 @@ export function UserForm() {
                       <input
                         {...(props.input as any)}
                         style={{ width: "20vw" }}
-                        type="text"
+                        type="password"
                         required
                       />
                     </div>
