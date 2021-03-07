@@ -7,7 +7,7 @@ import excuteQuery from './db';
  * db here, such as MongoDB, Fauna, SQL, etc.
  */
 
-export async function createUser({ username, password }: {username:string,password:any}) {
+export async function createUser({ name, password }: {name:string,password:any}) {
   // Here you should create the user and save the salt and hashed password (some dbs may have
   // authentication methods that will do it for you so you don't have to worry about it):
   const salt = crypto.randomBytes(16).toString('hex')
@@ -17,15 +17,15 @@ export async function createUser({ username, password }: {username:string,passwo
   const user = {
     id: uuidv4(),
     createdAt: Date.now(),
-    username,
+    name,
     hash,
     salt,
   }
 
   try {
     const result = await excuteQuery({
-        query: 'INSERT INTO users (id, createdAt, username, hash, salt) VALUES(?, ?, ?, ?, ?)',
-        values: [user.id, user.createdAt.toString(), user.username, user.hash, user.salt],
+        query: 'INSERT INTO user (id, createdAt, name, hash, salt) VALUES(?, ?, ?, ?, ?)',
+        values: [user.id, user.createdAt.toString(), user.name, user.hash, user.salt],
     });
     console.log( result );
 } catch ( error ) {
@@ -36,11 +36,11 @@ return user;
 }
 
 // Here you should lookup for the user in your DB
-export async function findUser({ username }:{username:string}) {
+export async function findUser({ name }:{name:string}) {
   try {
       const result = await excuteQuery({
-          query: 'SELECT * FROM users WHERE email = ?',
-          values: [ username ],
+          query: 'SELECT * FROM user WHERE name = ?',
+          values: [ name ],
       });
       return result[0];
   } catch (error) {

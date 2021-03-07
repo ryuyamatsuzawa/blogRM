@@ -2,11 +2,11 @@ import Local from 'passport-local'
 import { findUser, validatePassword } from './user'
 
 export const localStrategy = new Local.Strategy(function (
-  username,
+  name,
   password,
   done
 ) {
-  findUser({ username })
+  findUser({ name })
     .then((user) => {
       if (user && validatePassword(user, password)) {
         done(null, user)

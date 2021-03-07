@@ -4,7 +4,7 @@ export const LoginForm = ({ isLogin, errorMessage, onSubmit }) => (
   <form onSubmit={onSubmit}>
     <label>
       <span>ユーザーネーム</span>
-      <input type="text" name="username" required />
+      <input type="text" name="name" required />
     </label>
     <label>
       <span>パスワード</span>
