@@ -1,45 +1,14 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import crypto from 'crypto';
 import { v4 as uuidv4 } from 'uuid';
-import mysql from 'serverless-mysql';
+import excuteQuery from './db';
 
 /**
  * User methods. The example doesn't contain a DB, but for real applications you must use a
  * db here, such as MongoDB, Fauna, SQL, etc.
  */
 
- interface ICreateUser  {
-  username:string;
-  password:any;
-  req: NextApiRequest,
-  res: NextApiResponse
-  query:any
-  values:any 
-}
-
-const db = mysql({
-  config: {
-    host: process.env.MYSQL_HOST,
-    port: 3306,
-    database: process.env.MYSQL_DATABASE,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD
-  }
-})
-
-const users:any = []
-
-export default async function excuteQuery({ query, values }:{query:ICreateUser,values:ICreateUser}) {
-  try {
-    const results = await db.query(query, values);
-    await db.end();
-    return results;
-  } catch (error) {
-    return { error };
-  }
-}
-
-export async function createUser({ username, password }: {username:ICreateUser,password:any}) {
+export async function createUser({ username, password }: {username:string,password:any}) {
   // Here you should create the user and save the salt and hashed password (some dbs may have
   // authentication methods that will do it for you so you don't have to worry about it):
   const salt = crypto.randomBytes(16).toString('hex')
@@ -54,16 +23,30 @@ export async function createUser({ username, password }: {username:ICreateUser,p
     salt,
   }
 
-  // This is an in memory store for users, there is no data persistence without a proper DB
-  users.push(user)
+  try {
+    const result = await excuteQuery({
+        query: 'INSERT INTO users (id, createdAt, username, hash, salt) VALUES(?, ?, ?, ?, ?)',
+        values: [user.id, user.createdAt.toString(), user.username, user.hash, user.salt],
+    });
+    console.log( result );
+} catch ( error ) {
+    console.log( error );
+}
 
-  return { username, createdAt: Date.now() }
+return user;
 }
 
 // Here you should lookup for the user in your DB
-export async function findUser({ username }: {username:ICreateUser}) {
-  // This is an in memory store for users, there is no data persistence without a proper DB
-  return users.find((user:any) => user.username === username)
+export async function findUser({ username }:{username:string}) {
+  try {
+      const result = await excuteQuery({
+          query: 'SELECT * FROM users WHERE email = ?',
+          values: [ username ],
+      });
+      return result[0];
+  } catch (error) {
+      console.log(error);
+  }
 }
 
 // Compare the password of an already fetched user (using `findUser`) and compare the
