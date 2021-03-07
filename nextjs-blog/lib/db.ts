@@ -1,8 +1,6 @@
 import mysql from 'serverless-mysql';
 
 interface Idb  {
-  username:string;
-  password:any;
   query:any
   values:any 
 }
@@ -17,7 +15,9 @@ const db = mysql({
   }
 });
 
-export default async function excuteQuery({ query, values }:{query:Idb,values:Idb}) {
+//外部（user.ts）から接続マネージャーのインスタンスにアクセスするための関数（excuteQuery）を追加。
+
+export default async function excuteQuery({ query, values }:Idb) {
   try {
     const results = await db.query(query, values);
     await db.end();
