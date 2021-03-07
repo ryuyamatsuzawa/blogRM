@@ -42,7 +42,7 @@ export async function findUser({ name }:{name:string}) {
           query: 'SELECT * FROM user WHERE name = ?',
           values: [ name ],
       });
-      return result[0];
+      return result;
   } catch (error) {
       console.log(error);
   }
