@@ -2,6 +2,8 @@ import { useState } from 'react'
 import Router from 'next/router'
 import { useUser } from '../lib/hooks'
 import { LoginForm } from "../components/LoginForm";
+import Head from 'next/head';
+import { LinkForm } from "../components/LinkForm";
 
 const Signup = () => {
   useUser({ redirectTo: '/', redirectIfFound: true })
@@ -18,7 +20,7 @@ const Signup = () => {
       password: e.currentTarget.password.value,
     }
 
-    if (body.password !== e.currentTarget.rpassword.value) {
+    if (body.password !== e.currentTarget.password.value) {
       setErrorMsg(`The passwords don't match`)
       return
     }
@@ -42,6 +44,10 @@ const Signup = () => {
 
   return (
     <>
+      <Head>
+        <title>アカウント登録</title>
+      </Head>
+      <LinkForm />
       <div className="login">
         <LoginForm isLogin={false} errorMessage={errorMsg} onSubmit={handleSubmit} />
       </div>

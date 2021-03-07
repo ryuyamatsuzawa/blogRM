@@ -1,20 +1,28 @@
 import Link from 'next/link'
 
 export const LoginForm = ({ isLogin, errorMessage, onSubmit }) => (
-  <form onSubmit={onSubmit}>
+  <form onSubmit={onSubmit}  id="loginForm">
+    <div className="loginContainer">
+    <h2>ログイン画面</h2>
+    <div className="loginFormGroup">
     <label>
-      <span>ユーザーネーム</span>
+      <span>ユーザーネーム:</span>
       <input type="text" name="name" required />
     </label>
+    </div>
+    <div className="loginFormGroup">
     <label>
-      <span>パスワード</span>
+      <span>パスワード:</span>
       <input type="password" name="password" required />
     </label>
+    </div>
     {!isLogin && (
+      <div className="loginFormGroup">
       <label>
-        <span>パスワード確認</span>
+        <span>パスワード確認:</span>
         <input type="password" name="rpassword" required />
       </label>
+      </div>
     )}
 
     <div className="submit">
@@ -23,18 +31,19 @@ export const LoginForm = ({ isLogin, errorMessage, onSubmit }) => (
           <Link href="/signup">
             <a>新規アカウントを登録</a>
           </Link>
-          <button type="submit">Login</button>
+          <button type="submit">ログイン</button>
         </>
       ) : (
         <>
           <Link href="/login">
             <a>既にアカウントを持っています</a>
           </Link>
-          <button type="submit">Signup</button>
+          <button type="submit">登録</button>
         </>
       )}
     </div>
 
     {errorMessage && <p className="error">{errorMessage}</p>}
+    </div>
   </form>
 )

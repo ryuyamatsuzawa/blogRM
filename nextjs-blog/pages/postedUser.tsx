@@ -1,6 +1,8 @@
 import React from "react";
 import useSWR from 'swr';
 import { Users } from "./api/getUsers";
+import Head from 'next/head';
+import { LinkForm } from "../components/LinkForm";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
@@ -11,6 +13,10 @@ const PostedUser = () => {
 
   return (
     <div id="userList">
+      <Head>
+        <title>ユーザー情報一覧</title>
+      </Head>
+      <LinkForm />
       <h1>ユーザー情報一覧</h1>
       <div>全体で{data.length}人のユーザーがいます</div>
       <div className="userContainer">

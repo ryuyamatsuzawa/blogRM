@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import Router from 'next/router'
 import { useUser } from '../lib/hooks'
-import Layout from '../components/layout'
 import { LoginForm } from '../components/LoginForm'
+import Head from 'next/head';
+import { LinkForm } from "../components/LinkForm";
 
 const Login = () => {
   useUser({ redirectTo: '/', redirectIfFound: true })
@@ -26,7 +27,7 @@ const Login = () => {
         body: JSON.stringify(body),
       })
       if (res.status === 200) {
-        Router.push('/')
+        Router.push('/loginForm')
       } else {
         throw new Error(await res.text())
       }
@@ -38,6 +39,10 @@ const Login = () => {
 
   return (
     <>
+      <Head>
+        <title>ログイン画面</title>
+      </Head>
+      <LinkForm />
       <div className="login">
         <LoginForm isLogin errorMessage={errorMsg} onSubmit={handleSubmit} />
       </div>

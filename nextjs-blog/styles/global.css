@@ -192,3 +192,46 @@ img {
 text-align: center;
 margin-bottom: 10px;
 }
+
+/* //////LOGIN PAGE////// */
+
+#loginForm {
+  background-color: #d2e4db;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+
+ #loginForm .loginContainer {
+  background-color: white;
+  padding: 50px;
+}
+
+#loginForm .loginFormGroup {
+  display: block;
+  margin-bottom: 15px;
+  padding: 5px;
+}
+
+#loginForm .loginFormGroup label{
+  display: block;
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+#loginForm h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  }
+
+#loginForm button {
+  margin-left: 50px;
+  width: 100px;
+}
+
+
+
+
+
