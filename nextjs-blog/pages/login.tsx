@@ -2,9 +2,9 @@ import { useState } from 'react'
 import Router from 'next/router'
 import { useUser } from '../lib/hooks'
 import Layout from '../components/layout'
-import Form from '../components/form'
+import { LoginForm } from '../components/LoginForm'
 
-const LoginForm = () => {
+const Login = () => {
   useUser({ redirectTo: '/', redirectIfFound: true })
 
   const [errorMsg, setErrorMsg] = useState('')
@@ -37,21 +37,12 @@ const LoginForm = () => {
   }
 
   return (
-    <Layout>
+    <>
       <div className="login">
         <LoginForm isLogin errorMessage={errorMsg} onSubmit={handleSubmit} />
       </div>
-      <style jsx>{`
-        .login {
-          max-width: 21rem;
-          margin: 0 auto;
-          padding: 1rem;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-        }
-      `}</style>
-    </Layout>
+    </>
   )
 }
 
-export default LoginForm
+export default Login

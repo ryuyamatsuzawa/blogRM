@@ -2,9 +2,9 @@ import Local from 'passport-local'
 import { findUser, validatePassword } from './user'
 
 export const localStrategy = new Local.Strategy(function (
-  username:string,
-  password:string,
-  done:any
+  username:any,
+  password,
+  done
 ) {
   findUser({ username })
     .then((user) => {
