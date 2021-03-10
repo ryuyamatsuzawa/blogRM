@@ -17,7 +17,7 @@ const db = mysql({
 
 //外部（user.ts）から接続マネージャーのインスタンスにアクセスするための関数（excuteQuery）を追加。
 
-export default async function excuteQuery({ query, values }:Idb) {
+export const excuteQuery = async ({ query, values }:Idb) => {
   try {
     const results = await db.query(query, values);
     await db.end();

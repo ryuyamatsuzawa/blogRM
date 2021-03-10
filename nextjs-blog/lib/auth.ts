@@ -7,6 +7,7 @@ export async function setLoginSession(res:any, session:any) {
   const createdAt = Date.now()
   // Create a session object with a max age that we can validate later
   const obj = { ...session, createdAt, maxAge: MAX_AGE }
+  //objectを暗号化
   const token = await Iron.seal(obj, TOKEN_SECRET, Iron.defaults)
 
   setTokenCookie(res, token)

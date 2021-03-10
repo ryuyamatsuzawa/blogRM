@@ -15,7 +15,7 @@ const CreatePost = () => {
   return (
     <>
       <Head>
-        <title>投稿画面</title>
+        <title>投稿作成画面</title>
       </Head>
       <LinkForm />
       <PostForm />
