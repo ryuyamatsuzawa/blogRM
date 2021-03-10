@@ -14,7 +14,7 @@ export function PostForm() {
     });
     const json = await res.json();
     if (json.ok) {
-      router.push("/postedPost");
+      router.push("/");
     } else {
       alert(JSON.stringify(json));
     }

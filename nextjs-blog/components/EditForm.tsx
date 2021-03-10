@@ -14,7 +14,7 @@ export function EditForm() {
     });
     const json = await res.json();
     if (json.ok) {
-      router.push("/postedPost");
+      router.push("/userPage/post/postList");
     } else {
       alert(JSON.stringify(json));
     }
