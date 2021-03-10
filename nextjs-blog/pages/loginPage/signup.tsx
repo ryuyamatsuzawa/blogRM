@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import Router from 'next/router'
-import { useUser } from '../lib/hooks'
-import { LoginForm } from "../components/LoginForm";
+import { useUser } from '../../lib/hooks'
+import { LoginForm } from "../../components/LoginForm";
 import Head from 'next/head';
-import { LinkForm } from "../components/LinkForm";
+import { LinkForm } from "../../components/LinkForm";
 
 const Signup = () => {
   useUser({ redirectTo: '/', redirectIfFound: true })

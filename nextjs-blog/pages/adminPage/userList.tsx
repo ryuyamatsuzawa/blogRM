@@ -1,8 +1,8 @@
 import React from "react";
 import useSWR from 'swr';
-import { Users } from "./api/getUsers";
+import { Users } from "../api/getUsers";
 import Head from 'next/head';
-import { LinkForm } from "../components/LinkForm";
+import { LinkForm } from "../../components/LinkForm";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 

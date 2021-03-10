@@ -1,9 +1,10 @@
 import React from "react";
 import useSWR from 'swr';
-import { Posts } from "./api/getPosts";
+import { Posts } from "../../api/getPosts";
 import Divider from '@material-ui/core/Divider';
 import Head from 'next/head';
-import { LinkForm } from "../components/LinkForm";
+import { LinkForm } from "../../../components/LinkForm";
+import Link from 'next/link'
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
@@ -15,11 +16,16 @@ const PostedPost = () => {
   return (
     <div id="postList">
       <Head>
-        <title>投稿一覧</title>
+        <title>ユーザーの投稿編集</title>
       </Head>
       <LinkForm />
-      <h1>投稿一覧</h1>
+      <h1>ユーザーの投稿編集</h1>
       <div>全体で{data.length}個の投稿があります</div>
+      <div>
+        <Link href="/userPage/post/postForm">
+          <a>投稿する</a>
+        </Link>
+      </div>
       <div className="postContainer">
         {data.map((post) => {
           return (
@@ -39,6 +45,9 @@ const PostedPost = () => {
                   <label htmlFor="postedContent">内容:</label>
                   <p className="postedContent">{post.content}</p>
                 </div>
+                <Link href="/userPage/post/editForm">
+                  <a>編集する</a>
+                </Link>
               </div>
             </React.Fragment>
           );
