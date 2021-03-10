@@ -3,6 +3,7 @@ import useSWR from 'swr';
 import { Users } from "../api/getUsers";
 import Head from 'next/head';
 import { LinkForm } from "../../components/LinkForm";
+import Link from 'next/link'
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
@@ -19,6 +20,9 @@ const PostedUser = () => {
       <LinkForm />
       <h1>ユーザー情報一覧</h1>
       <div>全体で{data.length}人のユーザーがいます</div>
+      <Link href="/adminPage/userForm">
+        <a>新しいユーザー作成</a>
+      </Link>
       <div className="userContainer">
         {data.map((user) => {
           return (
@@ -33,7 +37,7 @@ const PostedUser = () => {
                   <p id="postedEmail">{user.email}</p>
                 </div>
                 <button>削除</button>
-                <button>編集</button>    
+                <button>編集</button>
               </div>
             </React.Fragment>
           );
