@@ -14,7 +14,7 @@ export function UserForm() {
     });
     const json = await res.json();
     if (json.ok) {
-      router.push("/postedUser");
+      router.push("/adminPage/userList");
     } else {
       alert(JSON.stringify(json));
     }

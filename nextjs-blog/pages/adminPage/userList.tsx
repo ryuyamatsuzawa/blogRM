@@ -32,6 +32,8 @@ const PostedUser = () => {
                   <label htmlFor="postedEmail">メールアドレス:</label>
                   <p id="postedEmail">{user.email}</p>
                 </div>
+                <button>削除</button>
+                <button>編集</button>    
               </div>
             </React.Fragment>
           );

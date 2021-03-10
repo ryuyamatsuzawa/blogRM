@@ -28,14 +28,14 @@ export const LoginForm = ({ isLogin, errorMessage, onSubmit }) => (
     <div className="submit">
       {isLogin ? (
         <>
-          <Link href="/signup">
+          <Link href="/adminPage/userForm">
             <a>新規アカウントを登録</a>
           </Link>
           <button type="submit">ログイン</button>
         </>
       ) : (
         <>
-          <Link href="/login">
+          <Link href="/loginPage/login">
             <a>既にアカウントを持っています</a>
           </Link>
           <button type="submit">登録</button>

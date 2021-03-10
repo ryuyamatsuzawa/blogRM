@@ -11,7 +11,7 @@ export function setTokenCookie(res:NextApiResponse, token:string) {
     expires: new Date(Date.now() + MAX_AGE * 1000),
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
-    path: '/',
+    path: '/loginPage/login',
     sameSite: 'lax',
   })
 
@@ -21,7 +21,7 @@ export function setTokenCookie(res:NextApiResponse, token:string) {
 export function removeTokenCookie(res:NextApiResponse) {
   const cookie = serialize(TOKEN_NAME, '', {
     maxAge: -1,
-    path: '/',
+    path: '/loginPage/login',
   })
 
   res.setHeader('Set-Cookie', cookie)

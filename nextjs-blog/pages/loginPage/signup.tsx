@@ -6,7 +6,7 @@ import Head from 'next/head';
 import { LinkForm } from "../../components/LinkForm";
 
 const Signup = () => {
-  useUser({ redirectTo: '/', redirectIfFound: true })
+  useUser({ redirectTo: '/loginPage/login', redirectIfFound: true })
 
   const [errorMsg, setErrorMsg] = useState('')
 
@@ -32,7 +32,7 @@ const Signup = () => {
         body: JSON.stringify(body),
       })
       if (res.status === 200) {
-        Router.push('/login')
+        Router.push('/loginPage/login')
       } else {
         throw new Error(await res.text())
       }

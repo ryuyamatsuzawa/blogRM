@@ -2,12 +2,8 @@ import Link from 'next/link'
 
 export const LinkForm = () => (
   <>
-   <Link href="loginPage/login">
+   <Link href="/loginPage/login">
       <a>ログイン</a>
-    </Link>
-    {" "}|{" "}
-    <Link href="loginPage/signup">
-      <a>新規アカウントを登録</a>
     </Link>
     {" "}|{" "}
     <Link href="/">
