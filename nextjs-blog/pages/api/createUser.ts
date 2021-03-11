@@ -24,7 +24,7 @@ const handler: NextApiHandler = async (req, res,  name, password) => {
         password: hash,
         salt,
       },
-    });
+    });    
     res.json({
       ok: true,
     });
