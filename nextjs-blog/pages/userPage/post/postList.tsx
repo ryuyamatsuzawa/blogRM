@@ -6,6 +6,8 @@ import Head from 'next/head';
 import { LinkForm } from "../../../components/LinkForm";
 import Link from 'next/link'
 
+//個人投稿一覧を持ってきたい。
+
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
 const PostedPost = () => {

@@ -5,6 +5,7 @@ import * as z from "zod";
 const requestBodySchema = z.object({
   title: z.string().min(1),
   content: z.string(),
+  authorId: z.number(),
 });
 
 const handler: NextApiHandler = async (req, res) => {
@@ -12,6 +13,7 @@ const handler: NextApiHandler = async (req, res) => {
     const result = requestBodySchema.parse(req.body);
     await prisma.post.create({
       data: {
+        authorId: result.authorId,
         title: result.title,
         content: result.content,
         createdAt: (new Date()).toISOString(),
