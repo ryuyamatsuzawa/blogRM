@@ -1,10 +1,12 @@
 import React from "react";
-import useSWR from 'swr';
+import useSWR,{ mutate,trigger } from 'swr';
 import { Posts } from "../../api/getPosts";
 import Divider from '@material-ui/core/Divider';
 import Head from 'next/head';
 import { LinkForm } from "../../../components/LinkForm";
 import Link from 'next/link'
+import { Button } from "@material-ui/core";
+import axios from "axios";
 
 //個人投稿一覧を持ってきたい。
 
@@ -48,8 +50,24 @@ const PostedPost = () => {
                   <p className="postedContent">{post.content}</p>
                 </div>
                 <Link href="/userPage/post/editForm">
-                  <a>編集する</a>
+                  <a><Button style={{color:'blue'}}>編集する</Button></a>
                 </Link>
+                <Button style={{color:'red'}}
+                 onClick={ async ()=>{
+
+                  const deleteUrl = '/userPage/post/postList'+ post.id;
+                  const url = '/userPage/post/postList';
+
+                  //mutateで画面を書き換える（削除予定のidを除いたデータにフィルタリング）
+                  mutate (url, data.filter(c => c.id !== post.id),false);
+
+                  //ここにaxiosで削除処理(サンプルとしてdeleteメソッド)
+                  await axios.delete(deleteUrl);
+
+                   //triggerでswr起動
+                   trigger(url);
+              }}
+                >削除する</Button>
               </div>
             </React.Fragment>
           );
