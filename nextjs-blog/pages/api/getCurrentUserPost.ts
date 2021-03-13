@@ -15,12 +15,10 @@ const requestUserSchema = z.object({
 const getCurrentUserPost: NextApiHandler = async (req, res) => {
   try {
     const user = requestUserSchema.parse(req.body);
-    const userId = await prisma.user.findMany({
-      where: {
-        id: user.id,
-      }
-    })
     const postList = await prisma.post.findMany({
+      where: {
+        authorId: user.id,
+      },
       select: {
         title: true,
         content: true,

@@ -38,7 +38,7 @@ const PostedUser = () => {
                   <label htmlFor="postedEmail">メールアドレス:</label>
                   <p id="postedEmail">{user.email}</p>
                 </div>
-                <Link href="/adminPage/userForm">
+                <Link href="/adminPage/userDetail">
                   <a><Button style={{ color: 'blue' }}>編集</Button></a>
                 </Link>
                 <Button

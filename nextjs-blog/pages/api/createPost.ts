@@ -16,7 +16,6 @@ const handler: NextApiHandler = async (req, res) => {
         content: result.content,
         createdAt: (new Date()).toISOString(),
         published: true,
-        // authorId: Number(),
       },
     });
     res.json({

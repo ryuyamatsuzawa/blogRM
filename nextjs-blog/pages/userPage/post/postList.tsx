@@ -25,7 +25,7 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json())
 // }
 
 const PostedPost = () => {
-  const { data, error } = useSWR<Posts>(`/api/getCurrentUserPost`, fetcher)
+  const { data = [], error } = useSWR<Posts>(`/api/getCurrentUserPost`, fetcher)
   if (error) return <div>failed to load</div>
   if (!data) return <div>loading...</div>
 
@@ -44,7 +44,6 @@ const PostedPost = () => {
       </div>
       <div className="postContainer">
         {data.map((post) => {
-          console.log(post)
           return (
             <React.Fragment key={post.id}>
               <div className="postDetail">
