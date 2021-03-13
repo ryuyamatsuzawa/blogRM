@@ -12,6 +12,7 @@ const getUser: NextApiHandler = async (req, res) => {
         email: true,
         name: true,
         password: true,
+        id:true,
         salt: true,
       },
     });

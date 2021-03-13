@@ -11,6 +11,17 @@ import axios from "axios";
 //個人投稿一覧を持ってきたい。
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
+const deletePost = async (id: string) => {
+  try {
+    const deletedID = await mutate(`api/deletePost`, deletePost(id))
+    return deletedID
+  } catch (error) {
+    console.log('hey failed to delete')
+    return null
+  } finally {
+    console.log(`bye`)
+  }
+}
 
 const PostedPost = () => {
   const { data, error } = useSWR<Posts>(`/api/getPosts`, fetcher)
@@ -33,7 +44,7 @@ const PostedPost = () => {
       <div className="postContainer">
         {data.map((post) => {
           return (
-            <React.Fragment key={post.id} >
+            <React.Fragment key={post.id}>
               <div className="postDetail">
                 <div className="postForm">
                   <label htmlFor="postedDate">作成日:</label>
@@ -60,8 +71,7 @@ const PostedPost = () => {
 
                   //mutateで画面を書き換える（削除予定のidを除いたデータにフィルタリング）
                   mutate (url, data.filter(c => c.id !== post.id),false);
-
-                  //ここにaxiosで削除処理(サンプルとしてdeleteメソッド)
+                  //ここにaxiosで削除処理(deleteメソッド)
                   await axios.delete(deleteUrl);
 
                    //triggerでswr起動
