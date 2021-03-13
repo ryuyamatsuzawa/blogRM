@@ -1,6 +1,6 @@
 import React from "react";
-import useSWR,{ mutate,trigger } from 'swr';
-import { Posts } from "../../api/getPosts";
+import useSWR, { mutate, trigger } from 'swr';
+import { Posts } from "../../api/getCurrentUserPost";
 import Divider from '@material-ui/core/Divider';
 import Head from 'next/head';
 import { LinkForm } from "../../../components/LinkForm";
@@ -11,20 +11,21 @@ import axios from "axios";
 //個人投稿一覧を持ってきたい。
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
-const deletePost = async (id: string) => {
-  try {
-    const deletedID = await mutate(`api/deletePost`, deletePost(id))
-    return deletedID
-  } catch (error) {
-    console.log('hey failed to delete')
-    return null
-  } finally {
-    console.log(`bye`)
-  }
-}
+
+// const deletePost = async (id: string) => {
+//   try {
+//     const deletedID = await mutate(`api/deletePost`, deletePost(id))
+//     return deletedID
+//   } catch (error) {
+//     console.log('hey failed to delete')
+//     return null
+//   } finally {
+//     console.log(`bye`)
+//   }
+// }
 
 const PostedPost = () => {
-  const { data, error } = useSWR<Posts>(`/api/getPosts`, fetcher)
+  const { data, error } = useSWR<Posts>(`/api/getCurrentUserPost`, fetcher)
   if (error) return <div>failed to load</div>
   if (!data) return <div>loading...</div>
 
@@ -43,6 +44,7 @@ const PostedPost = () => {
       </div>
       <div className="postContainer">
         {data.map((post) => {
+          console.log(post)
           return (
             <React.Fragment key={post.id}>
               <div className="postDetail">
@@ -61,23 +63,39 @@ const PostedPost = () => {
                   <p className="postedContent">{post.content}</p>
                 </div>
                 <Link href="/userPage/post/editForm">
-                  <a><Button style={{color:'blue'}}>編集する</Button></a>
+                  <a><Button style={{ color: 'blue' }}>編集</Button></a>
                 </Link>
-                <Button style={{color:'red'}}
-                 onClick={ async ()=>{
+                <Button
+                  style={{ color: 'red' }}
+                  onClick={() => {
+                    axios.delete('/api/deletePost', { data: { id: post.id } }).then(res => {
+                      console.log(res.data);
+                    })
+                    //   onClick={ async ()=>{
 
-                  const deleteUrl = '/userPage/post/postList'+ post.id;
-                  const url = '/userPage/post/postList';
+                    //     const deleteUrl = '/userPage/post/postList'+ post.id;
+                    //     const url = '/userPage/post/postList';
 
-                  //mutateで画面を書き換える（削除予定のidを除いたデータにフィルタリング）
-                  mutate (url, data.filter(c => c.id !== post.id),false);
-                  //ここにaxiosで削除処理(deleteメソッド)
-                  await axios.delete(deleteUrl);
+                    //     //mutateで画面を書き換える（削除予定のidを除いたデータにフィルタリング）
+                    //     mutate (url, data.filter(c => c.id !== post.id),false);
+                    //     //ここにaxiosで削除処理(deleteメソッド)
+                    //     async (id: string) => {
+                    //         try {
+                    //           const deletedID = await mutate(`api/deletePost`, post.id)
+                    //           return deletedID
+                    //         } catch (error) {
+                    //           console.log('hey failed to delete')
+                    //           return null
+                    //         } finally {
+                    //           console.log(`bye`)
+                    //         }
+                    //       }
 
-                   //triggerでswr起動
-                   trigger(url);
-              }}
-                >削除する</Button>
+                    //      //triggerでswr起動
+                    //      trigger(url);   
+
+                  }}
+                >削除</Button>
               </div>
             </React.Fragment>
           );

@@ -4,6 +4,8 @@ import { Users } from "../api/getUsers";
 import Head from 'next/head';
 import { LinkForm } from "../../components/LinkForm";
 import Link from 'next/link'
+import { Button } from "@material-ui/core";
+import axios from "axios";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
@@ -36,8 +38,17 @@ const PostedUser = () => {
                   <label htmlFor="postedEmail">メールアドレス:</label>
                   <p id="postedEmail">{user.email}</p>
                 </div>
-                <button>削除</button>
-                <button>編集</button>
+                <Link href="/adminPage/userForm">
+                  <a><Button style={{ color: 'blue' }}>編集</Button></a>
+                </Link>
+                <Button
+                  style={{ color: 'red' }}
+                  onClick={() => {
+                    axios.delete('/api/deleteUser', { data: { id: user.id } }).then(res => {
+                      console.log(res.data);
+                    })
+                  }}
+                >削除</Button>
               </div>
             </React.Fragment>
           );

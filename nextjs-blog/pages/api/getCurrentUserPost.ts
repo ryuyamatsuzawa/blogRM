@@ -1,20 +1,38 @@
 import prisma, { Post } from "../../lib/prisma";
 import type { NextApiHandler } from 'next'
+import * as z from "zod";
 
 //pickじゃなくてemitを使うと全体の型から省略できる。
 export type Posts = Pick<Post, "id" | "title" | "content" | "createdAt" | "authorId">[];
 
-const getUserPost: NextApiHandler = async (req, res) => {
+const requestUserSchema = z.object({
+  name: z.string(),
+  email: z.string(),
+  password: z.string(),
+  id: z.number(),
+});
+
+const getCurrentUserPost: NextApiHandler = async (req, res) => {
   try {
-    const userPost = await prisma.post.findMany({
+    const user = requestUserSchema.parse(req.body);
+    const userId = await prisma.user.findMany({
       where: {
-        authorId: Number()
-      },
+        id: user.id,
+      }
     })
-  res.status(200).json(userPost);
+    const postList = await prisma.post.findMany({
+      select: {
+        title: true,
+        content: true,
+        id: true,
+        createdAt: true,
+        authorId: true,
+      },
+    });
+  res.status(200).json(postList);
   } catch (error) {
     res.json({ error })
   }
 };
 
-export default getUserPost;
+export default getCurrentUserPost;

@@ -16,7 +16,7 @@ const fetcher = (url:any) =>
     })
 
 export function useUser({ redirectTo, redirectIfFound }: IUser = {}) {
-  const { data, error } = useSWR('/api/user', fetcher)
+  const { data, error } = useSWR(`/api/getUsers`, fetcher)
   const user = data?.user
   const finished = Boolean(data)
   const hasUser = Boolean(user)
