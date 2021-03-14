@@ -11,11 +11,10 @@ import axios from "axios";
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
 const UserDetailForm = () => {
-  const { data, error } = useSWR<Users>(`/api/getOneUser`, fetcher)
+const { data, error } = useSWR<Users>(`/api/getOneUser`, fetcher)
   if (error) return <div>failed to load</div>
   if (!data) return <div>loading...</div>
 
-  console.log(data)
 
   return (
     <form id="detailUser">
@@ -79,7 +78,7 @@ const UserDetailForm = () => {
           //     console.log(res.data);
           //   })
           // }}
-        >登録</Button>
+        >更新</Button>
       </div>
     </form>
   );
